@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="455" height="400" viewBox="0 0 455 400">
+<!--Designed By Fyissh Inc. 2021-->
+  <linearGradient  xmlns="http://www.w3.org/2000/svg" id="id1_l"><stop  offset="0" stop-color="#596c76"></stop><stop  offset="1" stop-color="#4d5356"></stop></linearGradient>
+   <linearGradient  xmlns="http://www.w3.org/2000/svg" id="id2_l"><stop  offset="0" stop-color="#b6c4cf"></stop><stop  offset="1" stop-color="#9fa3a7"></stop></linearGradient>
+ 
+  
+  <path fill="url(#id2_l)" d="M36.2,163.735l59.2,21.441c2.752,1,3.055,6.555-.279,10.732-2.671,3.348-56.308,70.158-60.89,75.859-3.01,3.743-6.47,2.409-6.413-2.323,0.064-5.275,1.624-91.276,1.815-97.477C29.772,167.427,33.172,162.637,36.2,163.735Z"/>
+  <rect fill="url(#id2_l)" data-name="Rounded Rectangle 1" class="cls-2" x="4" y="1" width="279" height="196" rx="25" ry="25"/>
+  <path fill="url(#id1_l)" data-name="Shape 1 copy" class="cls-3" d="M414.574,289.172L355.138,310.54c-2.764.994-3.068,6.533,0.279,10.695,2.682,3.337,56.535,69.921,61.136,75.6,3.023,3.731,6.5,2.4,6.439-2.315-0.064-5.257-1.631-90.967-1.822-97.146C421.033,292.851,417.619,288.078,414.574,289.172Z"/>
+  <rect fill="url(#id1_l)" data-name="Rounded Rectangle 1 copy" class="cls-4" x="130" y="90" width="325" height="228" rx="25" ry="25"/>
+  <path fill= "#e1faff" data-name="Rounded Rectangle 2 copy 2" class="cls-5" d="M184,140H401a7,7,0,0,1,0,14H184A7,7,0,0,1,184,140Zm0,53H401a7,7,0,0,1,0,14H184A7,7,0,0,1,184,193Zm0,53H401a7,7,0,0,1,0,14H184A7,7,0,0,1,184,246Z"/>
+</svg>

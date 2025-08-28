@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="509" height="505" viewBox="0 0 509 505">
+  <!--Designed By Fyissh Inc. 2021-->
+  <linearGradient  xmlns="http://www.w3.org/2000/svg" id="id1_l"><stop  offset="0" stop-color="#596c76"></stop><stop  offset="1" stop-color="#4d5356"></stop></linearGradient>
+   <linearGradient  xmlns="http://www.w3.org/2000/svg" id="id2_l"><stop  offset="0" stop-color="#b6c4cf"></stop><stop  offset="1" stop-color="#9fa3a7"></stop></linearGradient>
+ <filter xmlns="http://www.w3.org/2000/svg" id="filter" x="228" y="216" width="154" height="224" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dx="1.408" dy="8.889" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="1.732"/>
+      <feFlood result="flood" flood-opacity="0.79"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+    
+    
+  <rect id="Rounded_Rectangle" data-name="Rounded Rectangle" fill="url(#id2_l)" width="378" height="505" rx="40" ry="40"/>
+  <rect id="Line_1" data-name="Line 1" fill="url(#id1_l)" x="64" y="94" width="250" height="29" rx="14" ry="14"/>
+  <rect id="Line_2" data-name="Line 2" fill="url(#id1_l)" x="63" y="173" width="206" height="29" rx="14" ry="14"/>
+  <rect id="Line_3" data-name="Line 3" fill="url(#id1_l)" x="63" y="253" width="158" height="29" rx="14" ry="14"/>
+  <path id="Pencil_Shadow_layer" data-name="Pencil Shadow layer" filter="url(#filter)" d="M377,216q0.5,64,1,128l-39,40-90,43a15.192,15.192,0,0,1-19-18l42-89Z"/>
+  <path id="Pencil" fill="url(#id1_l)" d="M388,204l66,66L339,384l-90,43a15.192,15.192,0,0,1-19-18l42-89Z"/>
+  <path id="Pencil_Tip" data-name="Pencil Tip" fill="url(#id1_l)" d="M410,182l66,66,28-27a29.7,29.7,0,0,0,0-33l-35-35a30.794,30.794,0,0,0-32,1Z"/>
+</svg>

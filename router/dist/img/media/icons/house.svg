@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+   <!--Designed By Fyissh Inc. 2021-->
+     <linearGradient data-v-6e8d4944="" xmlns="http://www.w3.org/2000/svg" id="id1_l"><stop data-v-6e8d4944="" offset="0" stop-color="#596c76"></stop><stop data-v-6e8d4944="" offset="1" stop-color="#4d5356"></stop></linearGradient>
+   <linearGradient data-v-6e8d4944="" xmlns="http://www.w3.org/2000/svg" id="id2_l"><stop data-v-6e8d4944="" offset="0" stop-color="#b6c4cf"></stop><stop data-v-6e8d4944="" offset="1" stop-color="#9fa3a7"></stop></linearGradient>
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #b6c4cf;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #5565ad;
+      }
+
+      .cls-3 {
+        fill: #596c76;
+      }
+
+      .cls-4 {
+        fill: #415a6b;
+      }
+
+      .cls-5 {
+        fill: #b6c4cf;
+      }
+    </style>
+  </defs>
+  <path fill="url(#id2_l)" d="M35,400V254L201,90,362,253V400H35Z"/>
+  <path class="cls-2" d="M35,255V223L200,63,362,222v32L200,93Z"/>
+  <path class="cls-2" d="M299,96V60h46v77Z"/>
+  <path fill="url(#id1_l)" d="M35,225a27.015,27.015,0,0,1-26-6c-8.223-7.822-10.538-20.833-5-32C59.327,131.728,154.127,38.067,175,15c2.867-3.169,12.237-13.843,25-14,11.782-.144,20.653,8.666,24,12,33.225,33.092,113.294,113.5,170,171,8,11.246,6.357,26.391-3,35-8.054,7.411-20.665,8.878-31,3L201,65Z"/>
+  <path fill="url(#id1_l)" d="M281,16V60h82V16H281Z"/>
+  <path class="cls-4" d="M71,400V297c4.1-24.137,25.016-41.857,49-42a50.364,50.364,0,0,1,49,39V400H71Z"/>
+  <path class="cls-4" d="M199,254V366H327V254H199Z"/>
+  <path id="Shape_8_copy" data-name="Shape 8 copy" class="cls-5" d="M212,268v85h44V268H212Zm57,0v85h44V268H269Z"/>
+</svg>

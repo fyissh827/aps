@@ -1,0 +1,50 @@
+name: CI/CD Pipeline
+
+# Trigger pipeline on push or PR to main branch
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # Step 3: Install dependencies with legacy peer deps to avoid GraphQL conflicts
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      # Step 4: Build or run the project locally (optional for testing)
+      - name: Build project
+        run: npm run build || echo "No build script, skipping"
+
+      # Step 5: Deploy to server via SSH with PM2
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: 22
+          script: |
+            cd /home/admin/domains/aps
+            git reset --hard HEAD
+            git pull origin main
+            npm install --legacy-peer-deps
+            # Start or restart the app with PM2
+            pm2 start index.js --name centrals
+

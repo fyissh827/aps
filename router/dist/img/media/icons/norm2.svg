@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="514" height="516" viewBox="0 0 514 516">
+   <!--Designed By Fyissh Inc. 2021-->
+ <linearGradient  xmlns="http://www.w3.org/2000/svg" id="id1_l"><stop  offset="0" stop-color="#596c76"></stop><stop  offset="1" stop-color="#4d5356"></stop></linearGradient>
+   <linearGradient  xmlns="http://www.w3.org/2000/svg" id="id2_l"><stop  offset="0" stop-color="#b6c4cf"></stop><stop  offset="1" stop-color="#9fa3a7"></stop></linearGradient>
+ 
+  <rect fill="url(#id2_l)" id="Rectangle_Big" data-name="Rectangle Big" class="cls-1" x="2" y="6" width="481" height="479" rx="10" ry="10"/>
+  
+  
+  <path fill="url(#id1_l)" id="Lines" class="cls-4" d="M231,248h23V457H231V248Zm231,2h23V459H462V250ZM261,233H451v23H261V233Zm9,233H460v23H270V466Z"/>
+  <path fill="url(#id1_l)" id="_4_Rectangles" data-name="4 Rectangles" class="cls-4" d="M215,205h58a10,10,0,0,1,10,10v60a10,10,0,0,1-10,10H215a10,10,0,0,1-10-10V215A10,10,0,0,1,215,205ZM445,435h58a10,10,0,0,1,10,10v60a10,10,0,0,1-10,10H445a10,10,0,0,1-10-10V445A10,10,0,0,1,445,435Zm-2-231h58a10,10,0,0,1,10,10v60a10,10,0,0,1-10,10H443a10,10,0,0,1-10-10V214A10,10,0,0,1,443,204ZM214,435h58a10,10,0,0,1,10,10v60a10,10,0,0,1-10,10H214a10,10,0,0,1-10-10V445A10,10,0,0,1,214,435Z"/>
+  
+  
+</svg>

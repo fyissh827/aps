@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="966" height="968" viewBox="0 0 966 968">
+   <!--Designed By Fyissh Inc. 2021-->
+   
+  <linearGradient  xmlns="http://www.w3.org/2000/svg" id="id1_l"><stop  offset="0" stop-color="#596c76"></stop><stop  offset="1" stop-color="#4d5356"></stop></linearGradient>
+   <linearGradient  xmlns="http://www.w3.org/2000/svg" id="id2_l"><stop  offset="0" stop-color="#b6c4cf"></stop><stop  offset="1" stop-color="#9fa3a7"></stop></linearGradient>
+  <rect id="Rectangle" fill="url(#id2_l)" x="5" width="940" height="968"/>
+  <path id="Pulse" fill="url(#id1_l)" d="M0,404l171,1L283,280l94,117q44-92.5,88-185,68.5,226.5,137,453L720,334l80,154,79-93h80q0.5,11.5,1,23l-72,2L797,529,724,386,599,752,463,271,381,434,281,320,181,431H0V404Z"/>
+  <ellipse id="Small_Circle" data-name="Small Circle" fill="url(#id1_l)" cx="936" cy="406" rx="30" ry="31"/>
+</svg>

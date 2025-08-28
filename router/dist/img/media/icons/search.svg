@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+   <!--Designed By Fyissh Inc. 2021-->
+  <linearGradient  xmlns="http://www.w3.org/2000/svg" id="id1_l"><stop  offset="0" stop-color="#596c76"></stop><stop  offset="1" stop-color="#4d5356"></stop></linearGradient>
+   <linearGradient  xmlns="http://www.w3.org/2000/svg" id="id2_l"><stop  offset="0" stop-color="#b6c4cf"></stop><stop  offset="1" stop-color="#9fa3a7"></stop></linearGradient>
+ 
+  
+  <path fill="url(#id1_l)" d="M122,229L9,341a35.6,35.6,0,0,0,3,47,35.587,35.587,0,0,0,46,3L171,279Z"/>
+  <path fill="url(#id1_l)" d="M147,255l24,24L58,391a32.746,32.746,0,0,1-46-3Z"/>
+  <path fill="url(#id1_l)" d="M139,262C74.793,198.425,82.912,90.511,150,35c58.206-48.162,149.278-47.3,206,10,56.578,57.151,56.806,148.054,8,206C308.387,317.028,202.3,324.674,139,262Z"/>
+  <path fill="url(#id1_l)" d="M139,263c72-72.667,145-145.333,217-218,56.633,59.63,57.111,152.812,4,211C303.81,317.561,202.79,322.276,139,263Z"/>
+  <path fill="url(#id2_l)" d="M172,229c-41.771-41.667-40.355-112.395,3-153,41.18-38.567,107.747-38.291,148,2,38.784,38.821,39.917,101.519,7,142C291.763,267.023,216.388,273.276,172,229Z"/>
+  <path fill="url(#id2_l)" d="M173,229L323,78c41.6,42.887,40,111.893-2,152C280.5,268.681,214.587,268.86,173,229Z"/>
+</svg>

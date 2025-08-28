@@ -1,0 +1,52 @@
+scalar JSON
+
+
+type Query {
+  getUser: JSON
+  getState: JSON
+  getCount(alertSeen : ID!): JSON
+  getProfile(username : String) : JSON
+  getSubject(username : String) : JSON
+  getPeopleSuggestion(next : Int, length : Int!, id : String) : JSON
+
+  getGrewtale(next : Int, length : Int!) : JSON
+  getGrewtaleConnection(next : Int, length : Int!) : JSON
+  getGrewtaleById(id : String!) : JSON
+  getGrewtaleByPrimitiveId(next : Int, length : Int!, p_id : String!, items : Int) : JSON
+  getGrewtaleContent(id : Int!) : JSON
+
+  
+  getSearchUser(query : String!, next : Int, length : Int!) : JSON
+  getSearchSubject(query : String!, next : Int, length : Int!) : JSON
+  getSearchPast(query : String!, next : Int, length : Int!) : JSON
+  getSearchPresent(query : String!, next : Int, length : Int!) : JSON
+  getSearchFuture(query : String!, next : Int, length : Int!) : JSON
+  getSearchGrewtale(query : String!, next : Int, length : Int!) : JSON
+  
+ getProfileUser(username : String!) : JSON
+ getProfileSubject(username : String!) : JSON
+ getProfilePast(username : String!, next : Int, length : Int!) : JSON
+ getProfilePresent(username : String!, next : Int, length : Int!) : JSON
+ getProfileFuture(username : String!, next : Int, length : Int!) : JSON
+ getProfileGrewtale(username : String!, items : Int, next : Int, length : Int!) : JSON
+ getProfileConnector(id : String!, next : Int, length : Int!) : JSON
+
+   getAlert(next : Int, length : Int!) : JSON
+   
+  getNotification(next : Int, length : Int!) : JSON
+  getNotificationCount(alertSeen : Int) : JSON
+
+  getSearchHistory : JSON
+
+  getComment(primitive_id : String!, next : Int, length : Int!) : JSON
+  getCommentByType(primitive_id : Int!, next : Int, length : Int!, type : String) : JSON
+
+  getChat(user2 : String, next : Int, length : Int!) : JSON
+  getChatUser(next : Int, length : Int!) : JSON
+  getChatUserNew(id : String!) : JSON
+  getSingleMessage(id : String!) : JSON
+  
+  getWebLinkData(url : String!) : JSON
+  getLifelineObjWithUser(objId : Int, objType : Int, user2 : Int) : JSON
+  getMessagingRules(userId : Int!) : JSON
+}

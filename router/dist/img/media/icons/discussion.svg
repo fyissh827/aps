@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <!--Designed By Fyissh Inc. 2021-->
+   <linearGradient  xmlns="http://www.w3.org/2000/svg" id="id1_l"><stop  offset="0" stop-color="#596c76"></stop><stop  offset="1" stop-color="#4d5356"></stop></linearGradient>
+   <linearGradient  xmlns="http://www.w3.org/2000/svg" id="id2_l"><stop  offset="0" stop-color="#b6c4cf"></stop><stop  offset="1" stop-color="#9fa3a7"></stop></linearGradient>
+ 
+  <rect fill="url(#id1_l)" x="-6" width="571" height="569"/>
+  <rect  fill="url(#id2_l)" x="629" width="571" height="569"/>
+  <rect  fill="url(#id1_l)" x="629" y="631" width="571" height="569"/>
+  <rect fill="url(#id2_l)" x="-6" y="631" width="571" height="569"/>
+</svg>
