@@ -1,0 +1,29 @@
+services:
+  node_app:
+    image: node:18-alpine
+    container_name: central_api
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: sh -c "npm install --production --legacy-peer-deps && npm start"
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=host.docker.internal
+      - DB_USER=root
+      - DB_PASSWORD=
+      - DB_NAME=admin_np01track
+      - REDIS_HOST=redis-container   # <-- important!
+      - REDIS_PORT=6379
+      - KAFKA_BROKER=kafka:9092
+    networks:
+      - app_net
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: always
+
+networks:
+  app_net:
+    external: true

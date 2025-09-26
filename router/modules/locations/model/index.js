@@ -77,11 +77,11 @@ async function country(payload){
 try {
  const [row, fields] = await con.query(`SELECT * FROM countries` );
        _final = row;
- 
+ s
  }
 	  
 	  catch(e){
-		_final = 'Bug'
+		_final = e
 	  }
 	  if(_final == undefined){
 		  output = 'Error'

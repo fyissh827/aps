@@ -281,7 +281,12 @@ const Query = {
     const r = await crawler.process(url);
       return r;
    },// getWebLinkData(url : String!) : JSON
-   
+  searchUser : async(...d) => {
+    return [{
+      "name" : "harshit",
+      "class" : "5th"
+    }];
+  }
 };
 
 

@@ -2,6 +2,7 @@ scalar JSON
 
 
 type Query {
+  searchUser(text: String, offset: Int!, length: Int!) : JSON
   getUser: JSON
   getState: JSON
   getCount(alertSeen : ID!): JSON

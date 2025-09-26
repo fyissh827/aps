@@ -4,7 +4,7 @@ module.exports = {
 
 async city(req, res){
 	const payload = {
-  id : req.body.state
+  id : req.query.state
   };
 	
 const _model = await  Model.city(payload);

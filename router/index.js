@@ -280,7 +280,7 @@ router.route('/insert/subject').post(userMiddleware.isLoggedIn, subject.subject)
 
 router.route('/country').get(country.country);
 router.route('/state').post(states.states);
-router.route('/city').post(city.city);
+router.route('/city').get(city.city);
 
 //date & time +m
 

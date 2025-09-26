@@ -48,7 +48,7 @@ const  {graphiqlExpress,graphqlExpress} = require('apollo-server-express')
 app.use('/graphql/',userMiddleware.isLoggedInGraphql, (req, res) => graphqlExpress({ schema, endpointURL:'/graphql/', context: req })(req, res))
 app.use('/graphiql',graphiqlExpress({endpointURL:'/graphql/'}))
 
-app.route('/').get((_req, res) => {
+app.route('/api1').get((_req, res) => {
   res.send("Centrals APIS");
 
 });
@@ -56,13 +56,13 @@ app.route('/google/Login/credentials').get((_req, res) => {
   res.sendFile(__dirname + '/router/googleOauth.html');
 
 });
-app.route('/:dir').get((_req, res) => {
-  res.sendFile(__dirname + `/yamls/${_req.params.dir}`);
+// app.route('/:dir').get((_req, res) => {
+//   res.sendFile(__dirname + `/yamls/${_req.params.dir}`);
 
-});
+// });
 app.use('',  express.static('router/dist'));
 app.use('', router);
 app.use('', content);
 
 
-app.listen(PORT, () => lightship.signalReady()); 
+app.listen(PORT, '0.0.0.0', () => lightship.signalReady()); 

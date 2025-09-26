@@ -3,7 +3,8 @@ const _  = require('lodash');
 const Joi = require('joi');
 const _output = require('../../../../output/index.js');
 
-  
+const {profileUpdateEmitter} = require("../../../../kafka/index.js");
+
  
 
 
@@ -29,6 +30,7 @@ try {
 	  else if(_final.length === 0){
 		  output = 'Nothing' 
 	  }else {
+        
 		  output =  'Updated'
 		
 	  }
@@ -65,6 +67,8 @@ _final = row;
 	  else if(_final.length === 0){
 		  output = 'Nothing' 
 	  }else {
+		   profileUpdateEmitter.emit('greet', payload);
+           console.log("done");
 		  output = 'Updated'
 	  }
  await _output.response(output);
