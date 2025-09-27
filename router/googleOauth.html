@@ -1,84 +1,81 @@
-
 <!doctype html>
 <html>
-<head>
+  <head>
     <title>Google SignIn</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-signin-scope" content="profile email">
-   
-  
-</head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-signin-scope" content="profile email" />
+  </head>
 
   <body>
     <style>
-      #container{
-        display:none
+      #container {
+        display: none;
       }
-   </style>
-    <script  src="https://accounts.google.com/gsi/client" async defer></script>
-    <div id="g_id_onload"
-    data-client_id="913827419176-lb17nldphon48ehmaqd0ii6f3eoqab33.apps.googleusercontent.com"
-      data-nonce = "biaqbm70g23"
+    </style>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <div
+      id="g_id_onload"
+      data-client_id="913827419176-lb17nldphon48ehmaqd0ii6f3eoqab33.apps.googleusercontent.com"
+      data-nonce="biaqbm70g23"
       data-ux_mode="popup"
-      data-state_cookie_domain = "http://localhost:3000"
+      data-state_cookie_domain="http://localhost:3000"
       data-onsuccess="onSignIn"
-      data-scope = "profile"
-      data-allowed_parent_origin = "http://localhost:8080"
-     
-    data-callback = "handleResponse"
-           >
-    </div>
-    <div class="g_id_signin" data-type="standard" data-text="continue_with" data-shape="pill" data-theme ="filled_black"></div>
+      data-scope="profile"
+      data-allowed_parent_origin="http://localhost:8080"
+      data-callback="handleResponse"
+    ></div>
+    <div
+      class="g_id_signin"
+      data-type="standard"
+      data-text="continue_with"
+      data-shape="pill"
+      data-theme="filled_black"
+    ></div>
     <script>
-     
-     
       function handleResponse(googleUser) {
-      const decode = decoded(googleUser.credential);
-    };
-      function decoded(d){
-        var xhr = new XMLHttpRequest();
-  
-  // Making our connection  
-  var url = `/jwtdecode?q=${d}`;
-  xhr.open("GET", url, true);
-
-  // function execute after request is successful 
-  xhr.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-          supplyparent(this.responseText);
+        const decode = decoded(googleUser.credential);
       }
-  }
-  // Sending our request 
-  xhr.send();
-      };
-     async function supplyparent(d){
-     
-       
+      function decoded(d) {
+        var xhr = new XMLHttpRequest();
+
+        // Making our connection
+        var url = `/jwtdecode?q=${d}`;
+        xhr.open('GET', url, true);
+
+        // function execute after request is successful
+        xhr.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            supplyparent(this.responseText);
+          }
+        };
+        // Sending our request
+        xhr.send();
+      }
+      async function supplyparent(d) {
         var m = {
-          'authoriseSupplier' : true,
-           'data' : d
-        }
+          authoriseSupplier: true,
+          data: d,
+        };
         window.parent.postMessage(m, '*');
       }
-     async function imagerule(d){
+      async function imagerule(d) {
         var u = '';
-        const response =  await fetch(d);
-     const blob =  response.blob();
-    const file = new File([blob], 'image.jpg', {type: blob.type});
-   console.log(file);
-   var reader = new FileReader();
-   reader.readAsDataURL(file);
-   reader.onload = function () {
-     console.log(reader.result);
-   };
-   reader.onerror = function (error) {
-     console.log('Error: ', error);
-   };
-   return u;
+        const response = await fetch(d);
+        const blob = response.blob();
+        const file = new File([blob], 'image.jpg', { type: blob.type });
+        console.log(file);
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+          console.log(reader.result);
+        };
+        reader.onerror = function (error) {
+          console.log('Error: ', error);
+        };
+        return u;
       }
-      
     </script>
   </body>
-</html> 
+</html>

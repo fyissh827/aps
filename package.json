@@ -53,14 +53,16 @@
     "yaml": "^2.0.0"
   },
   "devDependencies": {
-    "prettier": "3.2.5"
+    "prettier": "^3.2.5"
   },
   "scripts": {
-  "start": "node index.js",                  
-  "dev": "npx nodemon index.js",                  
-   "debug": "nodemon --inspect --watch . index.js",   
-  "build": "echo \"No build step defined\""   
-},
+    "start": "node index.js",
+    "dev": "npx nodemon index.js",
+    "debug": "nodemon --inspect --watch . index.js",
+    "build": "echo \"No build step defined\"",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

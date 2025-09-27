@@ -1,66 +1,66 @@
 ---
-0: 
-  n: "Home"
-  i: "house"
-  p: "/"
-  l: 
-  t: "1"
-  c: "0"
-1: 
-  n: "Edit"
-  i: "profile"
-  p: "/edit/profile"
-  l: 
-  t: "1"
-  c: "0"
-2: 
-  n: "Explore"
-  i: "search"
-  p: ""
-  l: 
-  t: "2"
-  c: "0"
-3: 
-  n: "Notification"
-  i: "notification"
-  p: "/notification/activity"
-  l: 
-  - "/notification/activity"
-  - "/notification/request"
-  t: "1"
-  c: "0"
-4: 
-  n: "Discussion"
-  i: "discussion"
-  p: "/discussion"
-  l: 
-  t: "1"
-  c: "1"
-5: 
-  n: "Focus"
-  i: "norm2"
-  p: "/focus"
-  l: 
-  t: "1"
-  c: "1"
-6: 
-  n: "Lifeline"
-  i: "lifeline"
-  p: "/lifeline"
-  l: 
-  t: "0"
-  c: "0"
-7: 
-  n: "Messages"
-  i: "chat"
-  p: "/message"
-  l: 
-  t: "1"
-  c: "0"
-8: 
-  n: "Grewtale"
-  i: "grewtales"
-  p: "/grewtale?active=0"
-  l: 
-  t: "0"
-  c: "0"
+0:
+  n: 'Home'
+  i: 'house'
+  p: '/'
+  l:
+  t: '1'
+  c: '0'
+1:
+  n: 'Edit'
+  i: 'profile'
+  p: '/edit/profile'
+  l:
+  t: '1'
+  c: '0'
+2:
+  n: 'Explore'
+  i: 'search'
+  p: ''
+  l:
+  t: '2'
+  c: '0'
+3:
+  n: 'Notification'
+  i: 'notification'
+  p: '/notification/activity'
+  l:
+    - '/notification/activity'
+    - '/notification/request'
+  t: '1'
+  c: '0'
+4:
+  n: 'Discussion'
+  i: 'discussion'
+  p: '/discussion'
+  l:
+  t: '1'
+  c: '1'
+5:
+  n: 'Focus'
+  i: 'norm2'
+  p: '/focus'
+  l:
+  t: '1'
+  c: '1'
+6:
+  n: 'Lifeline'
+  i: 'lifeline'
+  p: '/lifeline'
+  l:
+  t: '0'
+  c: '0'
+7:
+  n: 'Messages'
+  i: 'chat'
+  p: '/message'
+  l:
+  t: '1'
+  c: '0'
+8:
+  n: 'Grewtale'
+  i: 'grewtales'
+  p: '/grewtale?active=0'
+  l:
+  t: '0'
+  c: '0'

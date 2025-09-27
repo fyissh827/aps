@@ -47,4 +47,3 @@ jobs:
             npm install --legacy-peer-deps
             # Start or restart the app with PM2
             pm2 start index.js --name centrals
-

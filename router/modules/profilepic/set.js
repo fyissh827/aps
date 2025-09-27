@@ -1,10 +1,6 @@
-
-
 module.exports = {
-
-    async set (req, res){
-
-        const actual = req.body.name;
-        console.log(actual);
-    }
-}
+  async set(req, res) {
+    const actual = req.body.name;
+    console.log(actual);
+  },
+};

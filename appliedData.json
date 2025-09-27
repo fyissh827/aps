@@ -1,357 +1,354 @@
 {
-    "requestlength": {
-      "grewtale": 10,
-      "home": 10,
-      "userGrewtale": 10,
-      "userPast": 10,
-      "userPresent": 10,
-      "userFuture": 10,
-      "searchUser": 8,
-      "searchGrewtale": 8,
-      "searchPast": 8,
-      "searchPresent": 8,
-      "searchFuture": 8,
-      "searchWord": 8,
-      "comment": 8,
-      "message": 10,
-      "messageUser": 8
+  "requestlength": {
+    "grewtale": 10,
+    "home": 10,
+    "userGrewtale": 10,
+    "userPast": 10,
+    "userPresent": 10,
+    "userFuture": 10,
+    "searchUser": 8,
+    "searchGrewtale": 8,
+    "searchPast": 8,
+    "searchPresent": 8,
+    "searchFuture": 8,
+    "searchWord": 8,
+    "comment": 8,
+    "message": 10,
+    "messageUser": 8
+  },
+  "plotters": [
+    {
+      "id": 1,
+      "sub": "Creative"
     },
-    "plotters": [
-      {
-        "id": 1,
-        "sub": "Creative"
+    {
+      "id": 2,
+      "sub": "Demandable"
+    },
+    {
+      "id": 3,
+      "sub": "Excitable"
+    },
+    {
+      "id": 4,
+      "sub": "Experienceable"
+    },
+    {
+      "id": 5,
+      "sub": "Futuristic"
+    },
+    {
+      "id": 6,
+      "sub": "Helpful"
+    },
+    {
+      "id": 7,
+      "sub": "Innovative"
+    },
+    {
+      "id": 8,
+      "sub": "Knowledgeable"
+    }
+  ],
+  "number": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
+    },
+    {
+      "id": 10
+    }
+  ],
+  "lifeline": {
+    "past": {
+      "labelShow": "Share something related to your Past to help others.",
+      "description": {
+        "name": "Description",
+        "dataName": "name",
+        "label": ""
       },
-      {
-        "id": 2,
-        "sub": "Demandable"
-      },
-      {
-        "id": 3,
-        "sub": "Excitable"
-      },
-      {
-        "id": 4,
-        "sub": "Experienceable"
-      },
-      {
-        "id": 5,
-        "sub": "Futuristic"
-      },
-      {
-        "id": 6,
-        "sub": "Helpful"
-      },
-      {
-        "id": 7,
-        "sub": "Innovative"
-      },
-      {
-        "id": 8,
-        "sub": "Knowledgeable"
-      }
-    ],
-    "number": [
-      {
-        "id": 1
-      },
-      {
-        "id": 2
-      },
-      {
-        "id": 3
-      },
-      {
-        "id": 4
-      },
-      {
-        "id": 5
-      },
-      {
-        "id": 6
-      },
-      {
-        "id": 7
-      },
-      {
-        "id": 8
-      },
-      {
-        "id": 9
-      },
-      {
-        "id": 10
-      }
-    ],
-    "lifeline": {
-      "past": {
-        "labelShow": "Share something related to your Past to help others.",
-        "description": {
-          "name": "Description",
-          "dataName": "name",
-          "label": ""
+      "period": {
+        "start": {
+          "name": "date1st"
         },
-        "period": {
-          "start": {
-            "name": "date1st"
-          },
-          "end": {
-            "name": "date2nd"
-          }
-        },
-        "how": {
-          "name": "How",
-          "dataName": "how",
-          "label": ""
-        },
-        "location": {
-          "name": "Where",
-          "dataName": "location",
-          "label": ""
-        },
-        "try": {
-          "name": "Try it",
-          "dataName": "try",
-          "label": ""
-        },
-        "story": {
-          "name": "Story",
-          "dataName": "story",
-          "label": ""
-        },
-        "type": {
-          "name": [
-            "Learning",
-            "Working"
-          ],
-          "dataName": "type",
-          "label": ""
-        },
-        "created_at": {
-          "name": "created_at",
-          "dataName": "created_at",
-          "label": ""
+        "end": {
+          "name": "date2nd"
         }
       },
-      "present": {
-        "labelShow": "Share something related to your Present to help others.",
-        "description": {
-          "name": "Description",
-          "dataName": "name",
-          "label": ""
-        },
-        "period": {
-          "start": {
-            "name": "date1st"
-          },
-          "end": {
-            "name": "date2nd"
-          }
-        },
-        "how": {
-          "name": "How",
-          "dataName": "how",
-          "label": ""
-        },
-        "location": {
-          "name": "Where",
-          "dataName": "location",
-          "label": ""
-        },
-        "try": {
-          "name": "Try for",
-          "dataName": "try",
-          "label": ""
-        },
-        "story": {
-          "name": "Story",
-          "dataName": "story",
-          "label": ""
-        },
-        "type": {
-          "name": [],
-          "dataName": "type",
-          "label": ""
-        },
-        "created_at": {
-          "name": "created_at",
-          "dataName": "created_at",
-          "label": ""
-        }
+      "how": {
+        "name": "How",
+        "dataName": "how",
+        "label": ""
       },
-      "future": {
-        "labelShow": "Share something related to your Past to help others.",
-        "description": {
-          "name": "Description",
-          "dataName": "name",
-          "label": ""
-        },
-        "period": {
-          "start": {
-            "name": "date1st"
-          },
-          "end": {
-            "name": "date2nd"
-          }
-        },
-        "location": {
-          "name": "Where",
-          "dataName": "location",
-          "label": ""
-        },
-        "try": {
-          "name": "Try for",
-          "dataName": "try",
-          "label": ""
-        },
-        "type": {
-          "name": [],
-          "dataName": "type",
-          "label": ""
-        },
-        "created_at": {
-          "name": "created_at",
-          "dataName": "created_at",
-          "label": ""
-        }
+      "location": {
+        "name": "Where",
+        "dataName": "location",
+        "label": ""
+      },
+      "try": {
+        "name": "Try it",
+        "dataName": "try",
+        "label": ""
+      },
+      "story": {
+        "name": "Story",
+        "dataName": "story",
+        "label": ""
+      },
+      "type": {
+        "name": ["Learning", "Working"],
+        "dataName": "type",
+        "label": ""
+      },
+      "created_at": {
+        "name": "created_at",
+        "dataName": "created_at",
+        "label": ""
       }
     },
-    "relations": [
-      {
-        "id": 1,
-        "sub": "Family"
+    "present": {
+      "labelShow": "Share something related to your Present to help others.",
+      "description": {
+        "name": "Description",
+        "dataName": "name",
+        "label": ""
       },
-      {
-        "id": 2,
-        "sub": "friend"
-      },
-      {
-        "id": 3,
-        "sub": "Knowing"
-      },
-      {
-        "id": 4,
-        "sub": "Colleaque"
-      },
-      {
-        "id": 5,
-        "sub": "Neighbor"
-      }
-    ],
-    "Standard": [
-      {
-        "id": 1,
-        "value": "Low",
-        "short": "L"
-      },
-      {
-        "id": 2,
-        "value": "Medium",
-        "short": "M"
-      },
-      {
-        "id": 3,
-        "value": "High",
-        "short": "H"
-      }
-    ],
-    "Privacy": [
-      {
-        "id": 1,
-        "value": "Public"
-      },
-      {
-        "id": 2,
-        "value": "Private"
-      }
-    ],
-    "comments": [
-      {
-        "id": 1,
-        "value": "Comments",
-        "r": "comment"
-      },
-      {
-        "id": 2,
-        "value": "Ideas",
-        "r": "suggestions_ideas"
-      },
-      {
-        "id": 3,
-        "value": "Q&A",
-        "r": "q_a"
-      }
-    ],
-    "Report": {
-      "grewtale": [
-        {
-          "id": 1,
-          "value": "Sexual content"
+      "period": {
+        "start": {
+          "name": "date1st"
         },
-        {
-          "id": 2,
-          "value": "Harmful or dangerous act"
-        },
-        {
-          "id": 3,
-          "value": "Hateful or abusive content"
-        },
-        {
-          "id": 4,
-          "value": "Violent or repulsive content"
-        },
-        {
-          "id": 5,
-          "value": "Spam or misleading"
+        "end": {
+          "name": "date2nd"
         }
-      ],
-      "comment": [
-        {
-          "id": 1,
-          "value": "Unwanted commercial content or spam"
-        },
-        {
-          "id": 2,
-          "value": "Pornography or sexually explicit material"
-        },
-        {
-          "id": 3,
-          "value": "Child abuse"
-        },
-        {
-          "id": 4,
-          "value": "Hate speech or graphic violence"
-        },
-        {
-          "id": 5,
-          "value": "Harassment or bullying"
-        }
-      ]
+      },
+      "how": {
+        "name": "How",
+        "dataName": "how",
+        "label": ""
+      },
+      "location": {
+        "name": "Where",
+        "dataName": "location",
+        "label": ""
+      },
+      "try": {
+        "name": "Try for",
+        "dataName": "try",
+        "label": ""
+      },
+      "story": {
+        "name": "Story",
+        "dataName": "story",
+        "label": ""
+      },
+      "type": {
+        "name": [],
+        "dataName": "type",
+        "label": ""
+      },
+      "created_at": {
+        "name": "created_at",
+        "dataName": "created_at",
+        "label": ""
+      }
     },
-    "periodType": [
-      {
-        "type": "date",
-        "range": false
+    "future": {
+      "labelShow": "Share something related to your Past to help others.",
+      "description": {
+        "name": "Description",
+        "dataName": "name",
+        "label": ""
       },
-      {
-        "type": "week",
-        "range": false
+      "period": {
+        "start": {
+          "name": "date1st"
+        },
+        "end": {
+          "name": "date2nd"
+        }
       },
-      {
-        "type": "month",
-        "range": false
+      "location": {
+        "name": "Where",
+        "dataName": "location",
+        "label": ""
       },
-      {
-        "type": "year",
-        "range": false
+      "try": {
+        "name": "Try for",
+        "dataName": "try",
+        "label": ""
       },
-      {
-        "type": "quarter",
-        "range": false
-      }
-    ],
-    "androidDetails":{
-      "versions" : {
-        "lastUpdated" : "12-10-2024"
+      "type": {
+        "name": [],
+        "dataName": "type",
+        "label": ""
+      },
+      "created_at": {
+        "name": "created_at",
+        "dataName": "created_at",
+        "label": ""
       }
     }
+  },
+  "relations": [
+    {
+      "id": 1,
+      "sub": "Family"
+    },
+    {
+      "id": 2,
+      "sub": "friend"
+    },
+    {
+      "id": 3,
+      "sub": "Knowing"
+    },
+    {
+      "id": 4,
+      "sub": "Colleaque"
+    },
+    {
+      "id": 5,
+      "sub": "Neighbor"
+    }
+  ],
+  "Standard": [
+    {
+      "id": 1,
+      "value": "Low",
+      "short": "L"
+    },
+    {
+      "id": 2,
+      "value": "Medium",
+      "short": "M"
+    },
+    {
+      "id": 3,
+      "value": "High",
+      "short": "H"
+    }
+  ],
+  "Privacy": [
+    {
+      "id": 1,
+      "value": "Public"
+    },
+    {
+      "id": 2,
+      "value": "Private"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "value": "Comments",
+      "r": "comment"
+    },
+    {
+      "id": 2,
+      "value": "Ideas",
+      "r": "suggestions_ideas"
+    },
+    {
+      "id": 3,
+      "value": "Q&A",
+      "r": "q_a"
+    }
+  ],
+  "Report": {
+    "grewtale": [
+      {
+        "id": 1,
+        "value": "Sexual content"
+      },
+      {
+        "id": 2,
+        "value": "Harmful or dangerous act"
+      },
+      {
+        "id": 3,
+        "value": "Hateful or abusive content"
+      },
+      {
+        "id": 4,
+        "value": "Violent or repulsive content"
+      },
+      {
+        "id": 5,
+        "value": "Spam or misleading"
+      }
+    ],
+    "comment": [
+      {
+        "id": 1,
+        "value": "Unwanted commercial content or spam"
+      },
+      {
+        "id": 2,
+        "value": "Pornography or sexually explicit material"
+      },
+      {
+        "id": 3,
+        "value": "Child abuse"
+      },
+      {
+        "id": 4,
+        "value": "Hate speech or graphic violence"
+      },
+      {
+        "id": 5,
+        "value": "Harassment or bullying"
+      }
+    ]
+  },
+  "periodType": [
+    {
+      "type": "date",
+      "range": false
+    },
+    {
+      "type": "week",
+      "range": false
+    },
+    {
+      "type": "month",
+      "range": false
+    },
+    {
+      "type": "year",
+      "range": false
+    },
+    {
+      "type": "quarter",
+      "range": false
+    }
+  ],
+  "androidDetails": {
+    "versions": {
+      "lastUpdated": "12-10-2024"
+    }
   }
+}
