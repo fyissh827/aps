@@ -44,6 +44,4 @@ jobs:
             cd /home/admin/domains/aps
             git reset --hard HEAD
             git pull origin main
-            npm install --legacy-peer-deps
-            # Start or restart the app with PM2
-            pm2 start index.js --name centrals
+            docker compose -f server-compose.yml up -d
