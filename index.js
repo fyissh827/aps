@@ -43,6 +43,10 @@ const resolvers = require('./router/resolvers');
 const { makeExecutableSchema } = require('graphql-tools');
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 const { graphiqlExpress, graphqlExpress } = require('apollo-server-express');
+console.log('love to all');
+app.use('/check',  (req, res) =>{
+  resolvers.json("ok harshi ok.")
+})
 // app.use('/graphql/', userMiddleware.isLoggedInGraphql, (req, res) =>
 //   graphqlExpress({ schema, endpointURL: '/graphql/', context: req })(req, res)
 // );
