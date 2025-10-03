@@ -68,4 +68,4 @@ jobs:
               -e REDIS_PORT=6379 \
               -e KAFKA_BROKER=kafka:9092 \
               --network app_net \
-              cdnpush:latest
+              centrals:latest
