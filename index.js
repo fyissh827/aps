@@ -15,34 +15,34 @@ const os = require('os');
 const lightship = createLightship();
 // set up port
 const PORT = process.env.PORT || 3000;
-var { contentSecurityPolicy } = require('./managers/contentSecurity.js');
-let nonce = crypto.randomBytes(16).toString('base64');
-app.use(contentSecurityPolicy(nonce));
+// var { contentSecurityPolicy } = require('./managers/contentSecurity.js');
+// let nonce = crypto.randomBytes(16).toString('base64');
+// app.use(contentSecurityPolicy(nonce));
 
-app.use(cors());
-app.use(
-  bunyanMiddleware({
-    headerName: 'X-Request-Id',
-    propertyName: 'reqId',
-    logName: 'reqId',
-    obscureHeaders: ['authorization'],
-    logger,
-    additionalRequestFinishData: (_req, _res) => {
-      return {};
-    },
-  })
-);
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-const fs = require('fs');
-const typeDefs = fs.readFileSync('./router/schema.graphql', {
-  encoding: 'utf-8',
-});
-const resolvers = require('./router/resolvers');
+// app.use(cors());
+// app.use(
+//   bunyanMiddleware({
+//     headerName: 'X-Request-Id',
+//     propertyName: 'reqId',
+//     logName: 'reqId',
+//     obscureHeaders: ['authorization'],
+//     logger,
+//     additionalRequestFinishData: (_req, _res) => {
+//       return {};
+//     },
+//   })
+// );
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+// const fs = require('fs');
+// const typeDefs = fs.readFileSync('./router/schema.graphql', {
+//   encoding: 'utf-8',
+// });
+// const resolvers = require('./router/resolvers');
 
-const { makeExecutableSchema } = require('graphql-tools');
-const schema = makeExecutableSchema({ typeDefs, resolvers });
-const { graphiqlExpress, graphqlExpress } = require('apollo-server-express');
+// const { makeExecutableSchema } = require('graphql-tools');
+// const schema = makeExecutableSchema({ typeDefs, resolvers });
+// const { graphiqlExpress, graphqlExpress } = require('apollo-server-express');
 console.log('love to all');
 app.use('/check',  (req, res) =>{
   resolvers.json("ok harshi ok.")
@@ -63,7 +63,7 @@ app.use('/check',  (req, res) =>{
 
 // });
 // app.use('', express.static('router/dist'));
-app.use('', router);
+// app.use('', router);
 // app.use('', content);
 
 app.listen(PORT, '0.0.0.0', () => lightship.signalReady());
