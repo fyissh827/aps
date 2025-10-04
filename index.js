@@ -43,10 +43,8 @@ const PORT = process.env.PORT || 3000;
 // const { makeExecutableSchema } = require('graphql-tools');
 // const schema = makeExecutableSchema({ typeDefs, resolvers });
 // const { graphiqlExpress, graphqlExpress } = require('apollo-server-express');
-app.use('/',  (req, res) =>{
-  res.send("centrals APIs")
-})
-app.use('/check',  (req, res) =>{
+
+app.use('/health',  (req, res) =>{
   res.json("ok harshi ok.   best of luck love you")
 })
 // app.use('/graphql/', userMiddleware.isLoggedInGraphql, (req, res) =>
@@ -67,5 +65,7 @@ app.use('/check',  (req, res) =>{
 // app.use('', express.static('router/dist'));
   app.use('', router);
 // app.use('', content);
-
+app.use('',  (req, res) =>{
+  res.send("centrals APIs")
+})
 app.listen(PORT, '0.0.0.0', () => lightship.signalReady());
