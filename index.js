@@ -43,7 +43,9 @@ const PORT = process.env.PORT || 3000;
 // const { makeExecutableSchema } = require('graphql-tools');
 // const schema = makeExecutableSchema({ typeDefs, resolvers });
 // const { graphiqlExpress, graphqlExpress } = require('apollo-server-express');
-console.log('love to all');
+app.use('/',  (req, res) =>{
+  res.send("centrals APIs")
+})
 app.use('/check',  (req, res) =>{
   res.json("ok harshi ok.   best of luck love you")
 })
