@@ -63,7 +63,7 @@ app.use('/check',  (req, res) =>{
 
 // });
 // app.use('', express.static('router/dist'));
-// app.use('', router);
+  app.use('', router);
 // app.use('', content);
 
 app.listen(PORT, '0.0.0.0', () => lightship.signalReady());
