@@ -45,7 +45,7 @@ const PORT = process.env.PORT || 3000;
 // const { graphiqlExpress, graphqlExpress } = require('apollo-server-express');
 console.log('love to all');
 app.use('/check',  (req, res) =>{
-  resolvers.json("ok harshi ok.")
+  res.json("ok harshi ok.")
 })
 // app.use('/graphql/', userMiddleware.isLoggedInGraphql, (req, res) =>
 //   graphqlExpress({ schema, endpointURL: '/graphql/', context: req })(req, res)
