@@ -53,18 +53,4 @@ jobs:
             docker network create app_net || true
 
             # Run the container with all environment variables
-            docker run -d \
-              -p 3000:3000 \
-              --name centrals \
-              -v /home/admin/domains/media:/media \
-              -e IMAGE_PATH=/media \
-              -e MAINAPI_URL=http://central_api:3000 \
-              -e DB_HOST=host.docker.internal \
-              -e DB_USER=admin_np01track \
-              -e DB_PASSWORD=827qw935qw5 \
-              -e DB_NAME=admin_np01track \
-              -e REDIS_HOST=redis-container \
-              -e REDIS_PORT=6379 \
-              -e KAFKA_BROKER=kafka:9092 \
-              --network app_net \
-              centrals:latest
+            docker compose -f server-compose.yml up -d
