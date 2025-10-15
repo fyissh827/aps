@@ -15,56 +15,56 @@ const os = require('os');
 const lightship = createLightship();
 // set up port
 const PORT = process.env.PORT || 3000;
-// var { contentSecurityPolicy } = require('./managers/contentSecurity.js');
-// let nonce = crypto.randomBytes(16).toString('base64');
-// app.use(contentSecurityPolicy(nonce));
+var { contentSecurityPolicy } = require('./managers/contentSecurity.js');
+let nonce = crypto.randomBytes(16).toString('base64');
+app.use(contentSecurityPolicy(nonce));
 
-// app.use(cors());
-// app.use(
-//   bunyanMiddleware({
-//     headerName: 'X-Request-Id',
-//     propertyName: 'reqId',
-//     logName: 'reqId',
-//     obscureHeaders: ['authorization'],
-//     logger,
-//     additionalRequestFinishData: (_req, _res) => {
-//       return {};
-//     },
-//   })
-// );
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
-// const fs = require('fs');
-// const typeDefs = fs.readFileSync('./router/schema.graphql', {
-//   encoding: 'utf-8',
-// });
-// const resolvers = require('./router/resolvers');
+app.use(cors());
+app.use(
+  bunyanMiddleware({
+    headerName: 'X-Request-Id',
+    propertyName: 'reqId',
+    logName: 'reqId',
+    obscureHeaders: ['authorization'],
+    logger,
+    additionalRequestFinishData: (_req, _res) => {
+      return {};
+    },
+  })
+);
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+const fs = require('fs');
+const typeDefs = fs.readFileSync('./router/schema.graphql', {
+  encoding: 'utf-8',
+});
+const resolvers = require('./router/resolvers');
 
-// const { makeExecutableSchema } = require('graphql-tools');
-// const schema = makeExecutableSchema({ typeDefs, resolvers });
-// const { graphiqlExpress, graphqlExpress } = require('apollo-server-express');
+const { makeExecutableSchema } = require('graphql-tools');
+const schema = makeExecutableSchema({ typeDefs, resolvers });
+const { graphiqlExpress, graphqlExpress } = require('apollo-server-express');
 
 app.use('/health',  (req, res) =>{
   res.json("ok harshi ok.   best of luck love you")
 })
-// app.use('/graphql/', userMiddleware.isLoggedInGraphql, (req, res) =>
-//   graphqlExpress({ schema, endpointURL: '/graphql/', context: req })(req, res)
-// );
-// app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql/' }));
+app.use('/graphql/', userMiddleware.isLoggedInGraphql, (req, res) =>
+  graphqlExpress({ schema, endpointURL: '/graphql/', context: req })(req, res)
+);
+app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql/' }));
 
-// app.route('/api1').get((_req, res) => {
-//   res.send('Centrals APIS');
-// });
-// app.route('/google/Login/credentials').get((_req, res) => {
-//   res.sendFile(__dirname + '/router/googleOauth.html');
-// });
-// app.route('/:dir').get((_req, res) => {
-//   res.sendFile(__dirname + `/yamls/${_req.params.dir}`);
+app.route('/api1').get((_req, res) => {
+  res.send('Centrals APIS');
+});
+app.route('/google/Login/credentials').get((_req, res) => {
+  res.sendFile(__dirname + '/router/googleOauth.html');
+});
+app.route('/:dir').get((_req, res) => {
+  res.sendFile(__dirname + `/yamls/${_req.params.dir}`);
 
-// });
-// app.use('', express.static('router/dist'));
+});
+app.use('', express.static('router/dist'));
   app.use('', router);
-// app.use('', content);
+ app.use('', content);
 app.use('',  (req, res) =>{
   res.send("centrals APIs")
 })
