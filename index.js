@@ -58,13 +58,14 @@ app.route('/api1').get((_req, res) => {
 app.route('/google/Login/credentials').get((_req, res) => {
   res.sendFile(__dirname + '/router/googleOauth.html');
 });
-app.route('/:dir').get((_req, res) => {
-  res.sendFile(__dirname + `/yamls/${_req.params.dir}`);
 
-});
 app.use('', express.static('router/dist'));
   app.use('', router);
  app.use('', content);
+ app.route('/:dir').get((_req, res) => {
+  res.sendFile(__dirname + `/yamls/${_req.params.dir}`);
+
+});
 app.use('',  (req, res) =>{
   res.send("centrals APIs")
 })
