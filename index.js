@@ -45,7 +45,10 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 const { graphiqlExpress, graphqlExpress } = require('apollo-server-express');
 
 app.use('/health',  (req, res) =>{
-  res.json("ok harshi ok.   best of luck love you")
+  res.json({
+    status : 200,
+    message : "working correctly"
+  })
 })
 app.use('/graphql/', userMiddleware.isLoggedInGraphql, (req, res) =>
   graphqlExpress({ schema, endpointURL: '/graphql/', context: req })(req, res)
@@ -69,4 +72,7 @@ app.use('', express.static('router/dist'));
 app.use('',  (req, res) =>{
   res.send("centrals APIs")
 })
+// this is now get the ;arge for spect to large segment for this folder next goal for this hard goat
+//manage for this give real max cooper new 
+
 app.listen(PORT, '0.0.0.0', () => lightship.signalReady());
