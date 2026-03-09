@@ -140,8 +140,4 @@ app.use('',  async(req, res) =>{
 })
 require('./kafka/index.js');
 app.listen(PORT, '0.0.0.0', () => lightship.signalReady());
-//gfdfgdfgdfgdfgfdgdfgdfg
-//gfdfgdfgdfgdfgfdgdfgdfg
-//gfdfgdfgdfgdfgfdgdfgdfg
-//gfdfgdfgdfgdfgfdgdfgdfg
-//gfdfgdfgdfgdfgfdgdfgdfg
+
