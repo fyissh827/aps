@@ -54,12 +54,12 @@ jobs:
             docker network create app_net || true
 
             # Stop old containers
-            docker compose -f server-compose.yml down || true
+            docker compose -f docker-compose.yml down || true
 
             # Pull latest images (if any)
-            docker compose -f server-compose.yml pull || true
+            docker compose -f docker-compose.yml pull || true
 
             # Rebuild and start containers
-            docker compose -f server-compose.yml up -d --build
+            docker compose -f docker-compose.yml up -d --build
 
             echo "Deployment finished successfully"
