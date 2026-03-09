@@ -83,13 +83,21 @@ app.use('/health',  (req, res) =>{
   })
 })
 app.use('/healthdb',  async(req, res) =>{
-  const [row, fields] = await con.execute(
+  try{
+   const [row, fields] = await con.execute(
       `SELECT 1 FROM users`
     );
   res.json({
     data : row,
     
   })
+  }catch(e){
+    res.json({
+    'Error' : e
+    
+  })
+  }
+  
 })
 app.use('/graphql/', userMiddleware.isLoggedInGraphql, (req, res) =>
   graphqlExpress({ schema, endpointURL: '/graphql/', context: req })(req, res)
