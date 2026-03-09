@@ -76,6 +76,11 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 const { graphiqlExpress, graphqlExpress } = require('apollo-server-express');
 const { signature } = require('./service/encode.js');
 const { otp } = require('./service/otp.js');
+app.use('/env',  (req, res) =>{
+  res.json({
+    status : process.env
+  })
+})
 app.use('/health',  (req, res) =>{
   res.json({
     status : 200,
