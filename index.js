@@ -27,19 +27,28 @@ const allowedDomains = [
   "https://fyish.com",
   "https://www.fyish.com"
 ];
+
 app.use(cors({
-  origin: "http://localhost:8081", // frontend port EXACT
-  origin: function (origin, callback) {
+  origin: (origin, callback) => {
+
+    // allow server-to-server or curl requests
     if (!origin) return callback(null, true);
+
+    // allow all localhost ports
     if (origin.startsWith("http://localhost")) {
       return callback(null, true);
     }
+
+    // allow production domains
     if (allowedDomains.includes(origin)) {
       return callback(null, true);
     }
-    return callback(new Error("Not allowed by CORS"));
+
+    return callback(new Error("CORS not allowed"));
   },
-  credentials: true
+  credentials: true,
+  methods: ["GET","POST","PUT","DELETE","OPTIONS"],
+  allowedHeaders: ["Content-Type","Authorization","X-Requested-With","X-Location"]
 }));
 
 app.use(
