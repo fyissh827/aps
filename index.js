@@ -21,25 +21,33 @@ let nonce = crypto.randomBytes(16).toString('base64');
 const cookieParser = require("cookie-parser");
 app.use(contentSecurityPolicy(nonce));
 //require('./kafka/producer/profileUpdateUsername.js');
-
+const con = require('./database/index.js');
 
 const allowedDomains = [
   "https://fyish.com",
   "https://www.fyish.com"
 ];
-app.use(cors({
+
+const corsOptions = {
   origin: function (origin, callback) {
+
     if (!origin) return callback(null, true);
+
     if (origin.startsWith("http://localhost")) {
       return callback(null, true);
     }
+
     if (allowedDomains.includes(origin)) {
       return callback(null, true);
     }
+
     return callback(new Error("Not allowed by CORS"));
   },
   credentials: true
-}));
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 app.use(
   bunyanMiddleware({
@@ -72,6 +80,15 @@ app.use('/health',  (req, res) =>{
   res.json({
     status : 200,
     message : "working correctly"
+  })
+})
+app.use('/healthdb',  async(req, res) =>{
+  const [row, fields] = await con.execute(
+      `SELECT 1 FROM users`
+    );
+  res.json({
+    data : row,
+    
   })
 })
 app.use('/graphql/', userMiddleware.isLoggedInGraphql, (req, res) =>
