@@ -1,6 +1,5 @@
 name: CI/CD Pipeline
 
-# Trigger pipeline on push or PR to main branch
 on:
   push:
     branches:
@@ -14,25 +13,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
+      # 1. Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step 2: Set up Node.js
-      - name: Set up Node.js
+      # 2. Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: 18
 
-      # Step 3: Install dependencies with legacy peer deps to avoid GraphQL conflicts
+      # 3. Install dependencies
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      # Step 4: Build or run the project locally (optional for testing)
+      # 4. Build project (if build script exists)
       - name: Build project
-        run: npm run build || echo "No build script, skipping"
+        run: npm run build || echo "No build step"
 
-      # Step 5: Deploy to server via SSH
+      # 5. Deploy to VPS via SSH
       - name: Deploy to server
         uses: appleboy/ssh-action@v0.1.6
         with:
@@ -41,16 +40,26 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           script: |
+            set -e
+
+            echo "Starting deployment..."
+
             cd /root/fyish/aps
 
-            # Reset local changes and pull latest code
-                 git pull origin main
+            # Reset repo to avoid conflicts
+            git fetch origin
+            git reset --hard origin/main
 
-            # Remove old container if exists
-            docker rm -f centrals || true
-
-            # Ensure external network exists
+            # Ensure docker network exists
             docker network create app_net || true
 
-            # Run the container with all environment variables
-            docker compose -f server-compose.yml up -d
+            # Stop old containers
+            docker compose -f server-compose.yml down || true
+
+            # Pull latest images (if any)
+            docker compose -f server-compose.yml pull || true
+
+            # Rebuild and start containers
+            docker compose -f server-compose.yml up -d --build
+
+            echo "Deployment finished successfully"
