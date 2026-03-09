@@ -14,7 +14,6 @@ const payload = {
   iat: now
   
 };
-console.log("payload : ", payload);
 const secretKey = process.env.REFRESHTOKEN_KEY; 
 const token = jwt.sign(payload, secretKey, {
   expiresIn: "60d"  

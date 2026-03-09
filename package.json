@@ -46,6 +46,7 @@
     "nodemailer": "^6.7.2",
     "nodemon": "^2.0.12",
     "notarealdb": "^0.2.2",
+    "opossum": "^9.0.0",
     "os": "^0.1.2",
     "path": "^0.12.7",
     "promise-mysql": "^5.0.3",

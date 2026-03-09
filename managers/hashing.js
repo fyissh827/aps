@@ -99,27 +99,21 @@ module.exports = {
 
     return JSON.stringify(d);
   },
-  setReturnData(a, b, c) {
-    if (c === 'Outside' && b[0] !== undefined) {
+  setReturnData(a, b, c){
+     if (c === 'Outside' && b[0] !== undefined) {
+      delete b[0].password;
+      delete b[0].email;
       return b;
     } else if (c === 'Self' || b[0] === undefined) {
-      //a.username = b.userData.username;
+       
+      a.username = b.userData.username;
       a.address = '';
-      a.b_status = 0;
-      a.created_at = Date.now();
-      a.device = null;
-      a.gender = 0;
       a.id = b.userData.id;
-      a.lat = null;
-      a.lon = null;
-      a.online = 0;
-      a.online_at = 0;
-      a.phone = '';
       a.profilepic = '1.svg';
-      a.role = null;
-      a.socket_id = null;
-      a.u_status = 0;
-    }
+      
+    } 
+    delete a.password;
+    delete a.email;
     return [a];
   },
 };

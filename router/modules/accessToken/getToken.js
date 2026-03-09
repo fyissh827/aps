@@ -29,9 +29,9 @@ if(decodedToken == null){
  }else{
    //get redis data;
   let data = await redisToken.get(tokenId);
-   if(!data && data !== clientSystem){
+   if(!data || data !== clientSystem){
        return res.status(401).json({
-        message : "You are not authorised please login.",
+        message : "Your system is different from actual system where token is authorised.",
         status : 401,
         token : null,
     })
@@ -44,7 +44,7 @@ if(decodedToken == null){
              },
              process.env.JWTKEY,
              {
-                expiresIn: '30sec'
+                expiresIn: '15min'
              }
            );
     return res.status(200).json({

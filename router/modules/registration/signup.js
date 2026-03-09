@@ -13,7 +13,7 @@ const { signature } = require('../../../service/encode.js');
 const RedisSignin  = require("../../../redisClass/signupCredentials.js");
 const { otp } = require('../../../service/otp.js');
 const { mailingEmitter } = require('../../../mailingEvent/index.js');
-
+const { refreshToken } = require('../../../managers/refreshToken.js');
  require('dotenv').config();
 module.exports = {
   async signup(e, r) {
@@ -38,6 +38,7 @@ module.exports = {
         date: Joi.number().required(),
         origin: Joi.number().required(),
         verified: Joi.number().required(),
+        clientSystem:Joi.string().required(),
       }).validate(e.body);
       if (o.error) {
         var i = o.error.details[0].message;
@@ -83,23 +84,24 @@ module.exports = {
       
 
       
-
-      
+let rt = await refreshToken(t[0].id ,t[0].email, e.body.clientSystem);
+console.log('first', rt);
+         ///first here 2 max
+const isProduction = process.env.NODE_ENV === "production";
+// delete access[0].password;
+// delete access[0].email;
+r.cookie("_srf", rt, {
+  httpOnly: true,
+  secure: isProduction,                 // true only on HTTPS production
+  sameSite: isProduction ? "none" : "lax",
+  path: "/",
+  maxAge: 60 * 24 * 60 * 60 * 1000
+});
       r.json({
         otpVerificationAction : false,
         action : 1,
         msg: 'login',
         type: 'login',
-        token: jwt.sign(
-          {
-            email: o.email,
-            userId: t[0].id,
-          },
-          process.env.JWTKEY,
-          {
-            expiresIn: '60d',
-          }
-        ),
         access: setReturnData(o, t, e.query.request),
       });
     } 
@@ -182,7 +184,7 @@ module.exports = {
         
 
         (a = (await Model.signup(t1)).output);
-      if ('Nothing' === a)
+        if ('Nothing' === a)
         r.json({
       otpVerificationAction : false,
           action : 0,
@@ -200,23 +202,26 @@ module.exports = {
           (phone = null),
           (o.profilepic = '1.svg'),
           (o.status = 0);
+
+
+          // first here 
+const isProduction = process.env.NODE_ENV === "production";
+// delete access[0].password;
+// delete access[0].email;
+let rt = await refreshToken(t[0].id ,t[0].email, e.body.clientSystem);
+r.cookie("_srf", rt, {
+  httpOnly: true,
+  secure: isProduction,                 // true only on HTTPS production
+  sameSite: isProduction ? "none" : "lax",
+  path: "/",
+  maxAge: 60 * 24 * 60 * 60 * 1000
+});
            r.json({
             otpVerificationAction : false,
             action : 1,
               true_msg: !0,
               msg: 'login',
               type: 'Registration',
-
-              token: jwt.sign(
-                {
-                  email: o.email,
-                  userId: a.id,
-                },
-                process.env.JWTKEY,
-                {
-                  expiresIn: '60d',
-                }
-              ),
               access: setReturnData(t1, a, e.query.request),
             })
           

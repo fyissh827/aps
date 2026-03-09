@@ -14,7 +14,6 @@ module.exports = {
     };
     const _model = await Model.login(payload);
     const access = _model.output;
-    console.log(access);
     const hash = access[0].password;
     if (access === 'Nothing') {
       res.json({
@@ -49,14 +48,17 @@ module.exports = {
           access: {},
         });
    }
- res.cookie("_srf", rt, {
-    httpOnly: true,    
-    secure: false,      
-    sameSite: "lax",    
-    path: "/",  
-    maxAge: 60 * 24 * 60 * 60 * 1000, 
-  });
-
+const isProduction = process.env.NODE_ENV === "production";
+delete access[0].password;
+delete access[0].email;
+res.cookie("_srf", rt, {
+  httpOnly: true,
+  secure: isProduction,                 // true only on HTTPS production
+  sameSite: isProduction ? "none" : "lax",
+  path: "/",
+  maxAge: 60 * 24 * 60 * 60 * 1000
+});
+        
         res.json({
           password_msg: false,
           email_msg: false,

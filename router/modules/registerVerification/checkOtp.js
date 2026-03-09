@@ -2,8 +2,9 @@ const RedisSignin = require("../../../redisClass/signupCredentials");
 const Model = require("../registration/model/index.js");
 const jwt = require('jsonwebtoken');
 const { setReturnData } = require('../../../managers/hashing');
+const { refreshToken } = require('../../../managers/refreshToken.js');
 exports.checkOtpRegisterVerification = async (req, res) => {
-  const { key, otp } = req.body;
+  const { key, otp, clientSystem } = req.body;
 
   const result = await RedisSignin.checkOtp(key, otp);
 
@@ -56,23 +57,21 @@ exports.checkOtpRegisterVerification = async (req, res) => {
              (phone = null),
              (t1.profilepic = '1.svg'),
              (t1.status = 0);
+
+             const isProduction = process.env.NODE_ENV === "production";
+             let rt = await refreshToken(t1.id ,t1.email, clientSystem);
+             res.cookie("_srf", rt, {
+               httpOnly: true,
+               secure: isProduction,                 // true only on HTTPS production
+               sameSite: isProduction ? "none" : "lax",
+               path: "/",
+               maxAge: 60 * 24 * 60 * 60 * 1000
+             });
               return res.json({
                action : 1,
                  true_msg: !0,
                  msg: 'login',
-                 type: 'Registration',
-   
-                 token: jwt.sign(
-                   {
-                     email: t1.email,
-                     userId: a.id,
-                   },
-                   process.env.JWTKEY,
-                   {
-                     expiresIn: '60d',
-                   }
-                 ),
-                 
+                 type: 'Registration',                 
                  access: setReturnData(t1, a, "Self"),
                })
              

@@ -97,7 +97,7 @@ const login = async (payload) => {
   console.log(payload);
   try {
     const [row, fields] = await con.execute(
-      `SELECT * FROM users WHERE email = '${payload.email}' AND u_status = '0'`
+      `SELECT first_name, last_name, username, address, verified,  id, profilepic, password, email FROM users WHERE email = '${payload.email}' AND u_status = '0'`
     );
     _final = row;
   } catch (err) {

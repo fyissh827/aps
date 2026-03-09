@@ -21,10 +21,26 @@ let nonce = crypto.randomBytes(16).toString('base64');
 const cookieParser = require("cookie-parser");
 app.use(contentSecurityPolicy(nonce));
 //require('./kafka/producer/profileUpdateUsername.js');
+
+
+const allowedDomains = [
+  "https://fyish.com",
+  "https://www.fyish.com"
+];
 app.use(cors({
-  origin: "http://localhost:8081", // frontend port EXACT
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (origin.startsWith("http://localhost")) {
+      return callback(null, true);
+    }
+    if (allowedDomains.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error("Not allowed by CORS"));
+  },
   credentials: true
 }));
+
 app.use(
   bunyanMiddleware({
     headerName: 'X-Request-Id',
@@ -52,7 +68,9 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 const { graphiqlExpress, graphqlExpress } = require('apollo-server-express');
 const { signature } = require('./service/encode.js');
 const { otp } = require('./service/otp.js');
-
+app.use('/env',  (req, res) =>{
+  res.json(process.env);
+})
 app.use('/health',  (req, res) =>{
   res.json({
     status : 200,

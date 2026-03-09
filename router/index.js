@@ -603,4 +603,8 @@ router.route('/registration/verification').post(checkOtpRegisterVerification);
 
 router.route('/refresh').post(acessToken);
 router.route('/logout').post(logout);
+
+router.route('/fail').post((req,res) => {
+  res.status(501).json("not accessed.")
+});
 module.exports = router;
