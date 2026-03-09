@@ -94,7 +94,6 @@ r.cookie("_srf", rt, {
   httpOnly: true,
   secure: isProduction,                 // true only on HTTPS production
   sameSite: isProduction ? "none" : "lax",
-  domain: ".fyish.com",
   path: "/",
   maxAge: 60 * 24 * 60 * 60 * 1000
 });
