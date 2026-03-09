@@ -85,7 +85,7 @@ module.exports = {
 
       
 let rt = await refreshToken(t[0].id ,t[0].email, e.body.clientSystem);
-console.log('first', rt);
+console.log('first', (process.env.NODE_ENV === "production"));
          ///first here 2 max
 const isProduction = process.env.NODE_ENV === "production";
 // delete access[0].password;
