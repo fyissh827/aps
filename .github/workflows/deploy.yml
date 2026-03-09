@@ -56,10 +56,10 @@ jobs:
             # Stop old containers
             docker compose -f server-compose.yml down || true
 
-            # Pull latest images (if any)
-            docker compose -f server-compose.yml pull || true
+            # Explicitly build Node.js Dockerfile
+            docker build -t centrals:latest .
 
-            # Rebuild and start containers
-            docker compose -f server-compose.yml up -d --build
+            # Start containers using docker-compose
+            docker compose -f server-compose.yml up -d
 
             echo "Deployment finished successfully"

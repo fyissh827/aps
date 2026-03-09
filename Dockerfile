@@ -1,20 +1,27 @@
-# Use official Node.js LTS image
-FROM node:18-alpine
+# Stage 1: Build
+FROM node:18-alpine AS builder
 
-# Set working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json first (better cache)
+# Copy package files first (better caching)
 COPY package*.json ./
 
-# Install dependencies
+# Install production dependencies only
 RUN npm install --production --legacy-peer-deps
 
-# Copy the rest of the application
+# Copy the rest of the app
 COPY . .
 
-# Expose port 3000
-EXPOSE 3000    
+# Stage 2: Runtime
+FROM node:18-alpine
 
-# Run app 
+WORKDIR /app
+
+# Copy node_modules and app from builder
+COPY --from=builder /app /app
+
+# Expose port
+EXPOSE 3000
+
+# Start the app
 CMD ["npm", "start"]
