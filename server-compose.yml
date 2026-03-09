@@ -18,12 +18,7 @@ services:
       REDIS_HOST: redis-container
       REDIS_PORT: 6379
       KAFKA_BROKER: kafka:9092
-      JWTKEY: SECRETKEY
-      SIGNATURE_SECRET: HAPPYHOURS
-      BCRYPT_SECRET_KEY : LARGEMACHINE
-      JWT_SECRET: MAXSTADIUM
-      MAILER_URL: http://mailing:3014/
-      REFRESHTOKEN_KEY: ROLLERGOSTER
+      
     networks:
       - database_network      # same network
       - app_net               # optional if you need other services
