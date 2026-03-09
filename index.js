@@ -27,27 +27,20 @@ const allowedDomains = [
   "https://fyish.com",
   "https://www.fyish.com"
 ];
-
-const corsOptions = {
+app.use(cors({
+  origin: "http://localhost:8081", // frontend port EXACT
   origin: function (origin, callback) {
-
     if (!origin) return callback(null, true);
-
     if (origin.startsWith("http://localhost")) {
       return callback(null, true);
     }
-
     if (allowedDomains.includes(origin)) {
       return callback(null, true);
     }
-
     return callback(new Error("Not allowed by CORS"));
   },
   credentials: true
-};
-
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
+}));
 
 app.use(
   bunyanMiddleware({
