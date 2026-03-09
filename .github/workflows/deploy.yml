@@ -41,7 +41,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
           script: |
-            cd /home/admin/domains/aps
+            cd /root/fyish/aps
 
             # Reset local changes and pull latest code
                  git pull origin main
