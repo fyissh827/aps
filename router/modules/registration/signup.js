@@ -14,6 +14,7 @@ const RedisSignin  = require("../../../redisClass/signupCredentials.js");
 const { otp } = require('../../../service/otp.js');
 const { mailingEmitter } = require('../../../mailingEvent/index.js');
 const { refreshToken } = require('../../../managers/refreshToken.js');
+const { generateHash } = require('../../../managers/randomHash.js');
  require('dotenv').config();
 module.exports = {
   async signup(e, r) {
@@ -102,6 +103,8 @@ r.cookie("_srf", rt, {
         action : 1,
         msg: 'login',
         type: 'login',
+        user : t[0].id,
+        token : await generateHash(),
         access: setReturnData(o, t, e.query.request),
       });
     } 
@@ -146,7 +149,6 @@ r.cookie("_srf", rt, {
        //put in redis and for verification process;
       if('Self' === e.query.request){
        let  _otp =  await otp();
-       console.log(_otp);
        let insertResult  = await RedisSignin.put(key, _otp, JSON.stringify(t1));
       if(insertResult === true){ 
 
@@ -222,6 +224,8 @@ r.cookie("_srf", rt, {
               true_msg: !0,
               msg: 'login',
               type: 'Registration',
+              user : t[0].id,
+              token : await generateHash(),
               access: setReturnData(t1, a, e.query.request),
             })
           

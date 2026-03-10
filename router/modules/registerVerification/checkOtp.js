@@ -3,6 +3,7 @@ const Model = require("../registration/model/index.js");
 const jwt = require('jsonwebtoken');
 const { setReturnData } = require('../../../managers/hashing');
 const { refreshToken } = require('../../../managers/refreshToken.js');
+const { generateHash } = require("../../../managers/randomHash.js");
 exports.checkOtpRegisterVerification = async (req, res) => {
   const { key, otp, clientSystem } = req.body;
 
@@ -71,7 +72,9 @@ exports.checkOtpRegisterVerification = async (req, res) => {
                action : 1,
                  true_msg: !0,
                  msg: 'login',
-                 type: 'Registration',                 
+                 type: 'Registration',
+                 user : a.id,
+                 token : await generateHash(),                 
                  access: setReturnData(t1, a, "Self"),
                })
              

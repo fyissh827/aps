@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Model = require('./model/index');
 const { refreshToken } = require('../../../managers/refreshToken.js');
+const { generateHash } = require('../../../managers/randomHash.js');
  require('dotenv').config();
 
 module.exports = {
@@ -63,6 +64,7 @@ res.cookie("_srf", rt, {
           password_msg: false,
           email_msg: false,
           true_msg: true,
+          token : await generateHash(),
           user: access[0].id,
           access: access,
         });
