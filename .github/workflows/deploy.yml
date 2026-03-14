@@ -57,7 +57,7 @@ jobs:
             docker compose -f server-compose.yml down || true
 
             # Explicitly build Node.js Dockerfile
-            docker build -t centrals:latest .
+            docker build --no-cache -t centrals:latest .
 
             # Start containers using docker-compose
             docker compose -f server-compose.yml up -d

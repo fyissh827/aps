@@ -13,6 +13,7 @@ const userMiddleware = require('./middleware/index');
 const redisSignin = require('./redisClass/signupCredentials');
 const cluster = require('cluster');
 const os = require('os');
+const client = require("prom-client");
 const lightship = createLightship();
 // set up port
 const PORT = process.env.PORT || 3000;
@@ -64,6 +65,14 @@ app.use(
   })
 );
 
+
+
+
+
+
+
+
+
 app.use(cookieParser());  
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -78,6 +87,30 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 const { graphiqlExpress, graphqlExpress } = require('apollo-server-express');
 const { signature } = require('./service/encode.js');
 const { otp } = require('./service/otp.js');
+
+//prom 
+
+const collectDefaultMetrics = client.collectDefaultMetrics;
+collectDefaultMetrics();
+
+const counter = new client.Counter({
+  name: "node_request_total",
+  help: "Total number of requests",
+});
+
+app.get("/", (req, res) => {
+  counter.inc();
+  res.send("Hello");
+});
+
+app.get("/metrics", async (req, res) => {
+  res.set("Content-Type", client.register.contentType);
+  res.end(await client.register.metrics());
+});
+
+
+//prom end
+
 app.use('/env',  (req, res) =>{
   res.json({
     status : process.env
