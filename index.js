@@ -94,8 +94,8 @@ const collectDefaultMetrics = client.collectDefaultMetrics;
 collectDefaultMetrics();
 
 const counter = new client.Counter({
-  name: "node_request_total",
-  help: "Total number of requests",
+  name: "http_requests_total",
+  help: "Total HTTP Requests"
 });
 
 app.get("/", (req, res) => {
