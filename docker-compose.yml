@@ -1,17 +1,12 @@
 services:
   node_app:
-    image: node:18-alpine
+    image: centrals:latest
     container_name: centrals
-    working_dir: /app
-    volumes:
-      - .:/app
-      - /app/node_modules
-    command: sh -c "npm install --production --legacy-peer-deps && npm start"
     ports:
-      - '3000:3000'
+      - "3000:3000"
     environment:
       NODE_ENV: production
-      DB_HOST: mariadb_db       # matches MySQL container name
+      DB_HOST: mariadb_db
       DB_USER: root
       DB_PASSWORD: rootpassword
       DB_NAME: fyish_01
@@ -19,14 +14,6 @@ services:
       REDIS_PORT: 6379
       KAFKA_BROKER: kafka:9092
     networks:
-      - database_network      # same network
-      - app_net               # optional if you need other services
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
+      - database_network
+      - app_net
     restart: always
-
-networks:
-  app_net:
-    external: true
-  database_network:
-    driver: bridge
