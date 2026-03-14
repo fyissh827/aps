@@ -104,8 +104,12 @@ app.get("/", (req, res) => {
 });
 
 app.get("/metrics", async (req, res) => {
+  try{
   res.set("Content-Type", client.register.contentType);
   res.end(await client.register.metrics());
+  }catch(e){
+    res.json(e);
+  }
 });
 
 
@@ -125,12 +129,9 @@ app.use('/health',  (req, res) =>{
 app.use('/healthdb',  async(req, res) =>{
   try{
    const [row, fields] = await con.execute(
-      `SELECT 1 FROM users`
+      `SELECT 1 FROM users ORDER BY 1 LIMIT 1`
     );
-  res.json({
-    data : row,
-    
-  })
+  res.json(row)
   }catch(e){
     res.json({
     'Error' : e
