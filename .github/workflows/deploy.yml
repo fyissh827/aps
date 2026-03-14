@@ -1,65 +1,67 @@
-name: CI/CD Pipeline
+name: CI/CD Deploy
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+push:
+branches:
+- main
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+deploy:
+runs-on: ubuntu-latest
 
-    steps:
-      # 1. Checkout repository
-      - name: Checkout repository
-        uses: actions/checkout@v3
+```
+steps:
+  # 1. Checkout repository
+  - name: Checkout Code
+    uses: actions/checkout@v3
 
-      # 2. Setup Node.js
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+  # 2. Setup Node (optional check)
+  - name: Setup Node
+    uses: actions/setup-node@v3
+    with:
+      node-version: 18
 
-      # 3. Install dependencies
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps
+  # 3. Install dependencies (optional validation)
+  - name: Install Dependencies
+    run: npm install --legacy-peer-deps
 
-      # 4. Build project (if build script exists)
-      - name: Build project
-        run: npm run build || echo "No build step"
+  # 4. Build check
+  - name: Build Project
+    run: npm run build || echo "No build script"
 
-      # 5. Deploy to VPS via SSH
-      - name: Deploy to server
-        uses: appleboy/ssh-action@v0.1.6
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          port: 22
-          script: |
-            set -e
+  # 5. Deploy to VPS
+  - name: Deploy to Server
+    uses: appleboy/ssh-action@v0.1.6
+    with:
+      host: ${{ secrets.SERVER_IP }}
+      username: ${{ secrets.SERVER_USER }}
+      key: ${{ secrets.SERVER_SSH_KEY }}
+      port: 22
+      script: |
+        set -e
 
-            echo "Starting deployment..."
+        echo "Starting deployment..."
 
-            cd /root/fyish/aps
+        cd /root/fyish/aps
 
-            # Reset repo to avoid conflicts
-            git fetch origin
-            git reset --hard origin/main
+        # Pull latest code
+        git fetch origin
+        git reset --hard origin/main
 
-            # Ensure docker network exists
-            docker network create app_net || true
+        # Ensure docker network exists
+        docker network create app_net || true
 
-            # Stop old containers
-            docker compose -f server-compose.yml down || true
+        # Stop existing containers
+        docker compose -f server-compose.yml down || true
 
-            # Explicitly build Node.js Dockerfile
-            docker build --no-cache -t centrals:latest .
+        # Build fresh image
+        docker build --no-cache -t centrals:latest .
 
-            # Start containers using docker-compose
-            docker compose -f server-compose.yml up -d
+        # Start containers
+        docker compose -f server-compose.yml up -d
 
-            echo "Deployment finished successfully"
+        # Clean old images
+        docker image prune -af
+
+        echo "Deployment finished successfully"
+```
