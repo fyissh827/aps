@@ -76,6 +76,11 @@ app.use(
 app.use(cookieParser());  
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use((req, res, next) => {
+  counter.inc();
+  console.log("counter updated");
+  next();
+});
 const fs = require('fs');
 const typeDefs = fs.readFileSync('./router/schema.graphql', {
   encoding: 'utf-8',
@@ -98,9 +103,9 @@ const counter = new client.Counter({
   help: "Total HTTP Requests"
 });
 
+const y = 0;
 app.get("/", (req, res) => {
-  counter.inc();
-  res.send("Hello");
+  res.json("hello World....");
 });
 
 app.get("/metrics", async (req, res) => {
