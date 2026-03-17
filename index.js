@@ -96,7 +96,8 @@ setInterval(() => {
 // -----------------------------
 const httpRequestCounter = new client.Counter({
   name: 'http_requests_total',
-  help: 'Total HTTP requests received'
+  help: 'Total HTTP requests received',
+   labelNames: ['method', 'route', 'status_code']
 });
 
 // -----------------------------
@@ -115,15 +116,18 @@ const httpRequestDuration = new client.Histogram({
 app.use((req, res, next) => {
   const end = httpRequestDuration.startTimer();
 
-  // Increment throughput counter
-  httpRequestCounter.inc();
-
   res.on('finish', () => {
-    end({
+    const labels = {
       method: req.method,
-      route: req.path,
+      route: req.route?.path || req.path,
       status_code: res.statusCode
-    });
+    };
+
+    // Throughput (Counter with labels)
+    httpRequestCounter.inc(labels);
+
+    // Latency (Histogram)
+    end(labels);
   });
 
   next();
