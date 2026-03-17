@@ -73,29 +73,59 @@ app.use(bodyParser.json());
 
 /* ---------------- PROMETHEUS ---------------- */
 
+// -----------------------------
+// 1. Default Metrics
+// -----------------------------
 client.collectDefaultMetrics({ timeout: 5000 });
 
+// -----------------------------
+// 2. CPU Usage Gauge
+// -----------------------------
 const cpuUsageGauge = new client.Gauge({
   name: 'node_process_cpu_usage_seconds_total',
   help: 'Total user and system CPU time spent in seconds'
 });
 
-// Update CPU metric every 5s
 setInterval(() => {
   const cpuUsage = process.cpuUsage();
-  cpuUsageGauge.set((cpuUsage.user + cpuUsage.system) / 1e6); // convert μs → s
+  cpuUsageGauge.set((cpuUsage.user + cpuUsage.system) / 1e6); // μs → seconds
 }, 5000);
 
-// --- HTTP Request Counter ---
+// -----------------------------
+// 3. HTTP Request Counter (Throughput)
+// -----------------------------
 const httpRequestCounter = new client.Counter({
   name: 'http_requests_total',
   help: 'Total HTTP requests received'
 });
 
+// -----------------------------
+// 4. HTTP Latency Histogram
+// -----------------------------
+const httpRequestDuration = new client.Histogram({
+  name: 'http_request_duration_seconds',
+  help: 'Duration of HTTP requests in seconds',
+  labelNames: ['method', 'route', 'status_code'],
+  buckets: [0.1, 0.3, 0.5, 1, 2, 5]
+});
+
+// -----------------------------
+// 5. Middleware for Metrics
+// -----------------------------
 app.use((req, res, next) => {
-   logger.info('HTTP request', { route: req.path, method: req.method });
+  const end = httpRequestDuration.startTimer();
+
+  // Increment throughput counter
   httpRequestCounter.inc();
-  console.log("counter updated");
+
+  res.on('finish', () => {
+    end({
+      method: req.method,
+      route: req.path,
+      status_code: res.statusCode
+    });
+  });
+
   next();
 });
 
@@ -124,6 +154,13 @@ const { otp } = require('./service/otp.js');
 app.get("/", (req, res) => {
   logger.info('Home route accessed');
   res.json("hello World.");
+});
+
+app.get('/slow', async (req, res) => {
+  // simulate slow request
+  setTimeout(() => {
+    res.send('Slow response');
+  }, 1000);
 });
 
 app.get("/metrics", async (req, res) => {
